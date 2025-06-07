@@ -449,6 +449,7 @@ nav a.logout:hover {
   background-color: #A7A7A7;
   cursor: not-allowed;
   transform: none;
+  pointer-events: none;
 }
 
 .action-btn:disabled:hover {
