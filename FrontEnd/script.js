@@ -129,17 +129,20 @@ function fetchDataFromBackend(endpoint) {
   function checkLoginStatus() {
     const token = localStorage.getItem('token');
     const loginLink = document.querySelector('nav ul li:nth-child(3) a');
+    const filtersContainer = document.querySelector('.filters-container');
     
     if (token) {
       loginLink.textContent = 'logout';
       loginLink.href = '#';
       loginLink.addEventListener('click', logout);
       activateEditMode();
+      filtersContainer.style.display = 'none';
     } else {
       loginLink.textContent = 'login';
       loginLink.href = 'connexion.html';
       loginLink.removeEventListener('click', logout);
       deactivateEditMode();
+      filtersContainer.style.display = 'flex';
     }
   }
   function logout(event) {
