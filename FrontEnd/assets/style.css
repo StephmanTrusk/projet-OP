@@ -394,7 +394,6 @@ nav a.logout:hover {
 
 .modal-gallery img {
   width: 100%;
-  height: 104px;
   object-fit: cover;
 }
 
@@ -444,6 +443,17 @@ nav a.logout:hover {
 
 .action-btn:hover {
   background-color: #0E4940;
+}
+
+.action-btn:disabled {
+  background-color: #A7A7A7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.action-btn:disabled:hover {
+  background-color: #A7A7A7;
+  transform: none;
 }
 
 .delete-btn {

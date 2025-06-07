@@ -290,6 +290,25 @@ function fetchDataFromBackend(endpoint) {
     const addPhotoForm = document.getElementById('add-photo-form');
     addPhotoForm.addEventListener('submit', submitNewProject);
     loadCategoriesInSelect();
+
+    // Ajout des écouteurs pour la validation des champs
+    const validateBtn = document.getElementById('validate-photo-btn');
+    const photoTitle = document.getElementById('photo-title');
+    const photoCategory = document.getElementById('photo-category');
+
+    function validateForm() {
+      const hasImage = photoUpload.files.length > 0;
+      const hasTitle = photoTitle.value.trim() !== '';
+      const hasCategory = photoCategory.value !== '';
+      validateBtn.disabled = !(hasImage && hasTitle && hasCategory);
+    }
+
+    photoUpload.addEventListener('change', validateForm);
+    photoTitle.addEventListener('input', validateForm);
+    photoCategory.addEventListener('change', validateForm);
+
+    // Désactiver le bouton au chargement initial
+    validateBtn.disabled = true;
   }
   
   function closeModals() {
