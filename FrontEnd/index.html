@@ -17,9 +17,9 @@
 	<nav>
 		<ul>
 			<li><a href="index.html">projets</a></li>
-			<li>contact</li>
-			<li><a href="connexion.html">login</a></a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><a href="#contact">contact</a></li>
+			<li><a href="connexion.html">login</a></li>
+			<li><a href="#"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
 		</ul>
 	</nav>
 </header>
@@ -31,57 +31,17 @@
 		<article>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l'esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<div class="filters-container">
+			<!-- Les filtres sont ajoutés ici par js -->
+		</div>
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+			<!-- Les images sont ajoutés ici par le js -->
 		</div>
 	</section>
 	<section id="contact">
@@ -98,6 +58,78 @@
 		</form>
 	</section>
 </main>
+
+<div class="modal-container" id="projects-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h3>Galerie photo</h3>
+    
+    <div class="modal-gallery">
+      <!-- Les projets seront chargés ici -->
+    </div>
+    
+    <hr class="modal-separator">
+    
+    <div class="modal-actions">
+      <button id="add-photo-btn" class="action-btn">Ajouter une photo</button>
+      <button id="delete-gallery-btn" class="action-btn delete-btn">Supprimer la galerie</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour ajouter photo -->
+<div class="modal-container" id="add-photo-modal">
+  <div class="modal-content">
+    <span class="back-modal">&larr;</span>
+    <span class="close-modal">&times;</span>
+    <h3>Ajout photo</h3>
+    
+    <form id="add-photo-form">
+      <div class="photo-upload-container">
+        <div id="photo-preview">
+          <i class="far fa-image"></i>
+          <label for="photo-upload" class="photo-upload-label">+ Ajouter photo</label>
+          <input type="file" id="photo-upload" name="image" accept="image/*" required>
+          <p class="upload-info">jpg, png : 4mo max</p>
+        </div>
+        <img id="preview-image" src="" alt="" style="display: none;">
+      </div>
+      
+      <!-- Message d'erreur de la page de connexion -->
+      <div class="form-error-message" id="photo-error-message"></div>
+      
+      <div class="form-group">
+        <label for="photo-title">Titre</label>
+        <input type="text" id="photo-title" name="title" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="photo-category">Catégorie</label>
+        <select id="photo-category" name="category" required>
+          <!-- js modif de la liste des catégories -->
+        </select>
+      </div>
+      
+      <hr class="modal-separator">
+      
+      <div class="modal-actions">
+        <button type="submit" id="validate-photo-btn" class="action-btn">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--mode édition -->
+<div class="edit-banner" style="display: none;">
+  <i class="fas fa-edit"></i>
+  <span>Mode édition</span>
+</div>
+
+<!-- Bouton modifier -->
+<div class="edit-projects-btn" style="display: none;">
+  <i class="fas fa-edit"></i>
+  <span>modifier</span>
+</div>
 
 <footer>
 	<nav>
